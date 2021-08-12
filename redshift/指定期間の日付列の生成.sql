@@ -1,6 +1,6 @@
 select 
-    current_date::date  - (i * interval '1 day') as date
+    ('2019-02-01' + row_number() over (order by id))::date as base_date
 from 
-    generate_series(1,datediff('day',date('2019-01-01'), date(current_date))) i 
-order by
-    1
+    hoge.fuga
+limit 
+    366
